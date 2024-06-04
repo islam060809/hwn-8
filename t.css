@@ -1,0 +1,448 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0 auto;
+}
+
+body {
+    background: #212123;
+    font-family: "Montserrat", sans-serif;
+    height: 2508px;
+}
+
+.conteiner {
+    margin: auto;
+    padding: 0;
+    display: block;
+}
+
+.hed {
+    margin: auto;
+    width: 1470px;
+    height: 36px;
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.hed-box4 img {
+    margin-right: 20px;
+}
+
+.hed-box4 {
+    position: relative;
+}
+.hed-box3{
+    width: 303px;
+height: 27px;
+display: flex;
+}
+.hed-box3 button{
+    height: 27px;
+    width: 27px;
+    background-color: #191919;
+    border-radius: 6px 0px 0px 6px;
+}
+.per1 {
+    width: 12px;
+    height: 12px;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 10.97px;
+    text-align: left;
+    color: #F6F6F7;
+    background: #6C3EB8;
+    border-radius: 10px;
+    text-align: center;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    padding-top: 2px;
+}
+
+.hed input {
+    width: 276px;
+    height: 27px;
+    top: -186px;
+    left: 590px;
+    gap: 0px;
+    border-radius: 0px 6px 6px 0px;
+    opacity: 0px;
+    background: #191919;
+    border: none;
+    padding-left: 10px;
+}
+
+.info {
+    margin: auto;
+    padding: 0;
+    display: flex;
+    width: 1292px;
+    height: 454px;
+    margin-top: 21px;
+}
+
+.categorie {
+    width: 304px;
+    height: 423px;
+    border-radius: 6px;
+    background: #191919;
+    padding-left: 24px;
+    padding-top: 25px;
+}
+
+.str-cate {
+    margin-right: 150px;
+}
+
+.str-cate .cate-a {
+    display: block;
+    margin-top: 12px;
+}
+
+.categorie h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 32px;
+}
+
+a {
+    text-decoration: none;
+    color: #576067;
+}
+
+a:hover {
+    color: #8B57C6;
+}
+
+.end-cate {
+    margin-top: 216px;
+}
+
+.help {
+    margin-right: 85px;
+}
+
+.sale {
+    width: 950px;
+    height: 443px;
+    top: -134px;
+    left: 267px;
+    gap: 0px;
+    border-radius: 6px;
+    opacity: 0px;
+    background: #191919;
+    margin-left: 20px;
+    display: block;
+}
+
+.sale h2 {
+    font-family: Montserrat;
+    font-size: 119px;
+    font-weight: 900;
+    line-height: 145.06px;
+    text-align: left;
+    margin-left: 35px;
+    color: #2a2a2a;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    position: relative;
+}
+
+.sale img {
+    position: absolute;
+    top: 180px;
+    right: 190px;
+}
+
+.sele-text {
+    width: 481px;
+    height: 183px;
+    border-radius: 6px;
+    margin-left: 42px;
+    margin-top: 9px;
+}
+
+.sele-text h3 {
+    font-family: Montserrat;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 51.2px;
+    text-align: left;
+    color: #FFFFFF;
+}
+
+.sele-text p {
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19.5px;
+    text-align: left;
+    color: #616E74;
+}
+
+.trend {
+    margin: auto;
+    width: 1274px;
+    height: 378px;
+    border-radius: 6px;
+    background: #191919;
+    padding-top: 25px;
+}
+
+.trend h3 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24.38px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.rot,
+.rooot,
+.roooot {
+    display: flex;
+    margin-top: 24px;
+}
+
+.card {
+    width: 230px;
+    height: 245px;
+    border-radius: 8px;
+    background: #212123;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.card p, h2{
+    margin-left: 12px;
+}
+.card img {
+    width: 230px;
+    height: 110px;
+    top: 381px;
+    left: -35px;
+    gap: 0px;
+    opacity: 0px;
+    border-radius: 8px 8px 0px 0px;
+}
+
+
+.name {
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 18.29px;
+    text-align: left;
+    color: #FFFFFF;
+    margin-top: 12px;
+    margin-bottom: 5px;
+}
+
+.card-cate {
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14.63px;
+    text-align: left;
+    color: #B8B8B8;
+    flex-grow: 1;
+
+}
+
+.card-price {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24.38px;
+    color: #6C3EB8;
+
+}
+
+.worth {
+    width: 1274px;
+    height: 420px;
+    top: 707px;
+    left: -57px;
+    gap: 0px;
+    border-radius: 6px 0px 0px 0px;
+    opacity: 0px;
+    background: #191919;
+    margin: auto;
+    margin-top: 21px;
+    padding-top: 22px;
+}
+
+.worth h3 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24.38px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 24px;
+}
+
+.root {
+    display: flex;
+}
+
+.card2 {
+    width: 230px;
+    height: 274px;
+    top: 777px;
+    left: -35px;
+    gap: 0px;
+    opacity: 0px;
+}
+
+.card2 img {
+    width: 230px;
+    height: 230px;
+    top: 777px;
+    left: -35px;
+    gap: 0px;
+    opacity: 0px;
+}
+
+.name2 {
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24.38px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.new-year {
+    margin: auto;
+    display: flex;
+    width: 1274px;
+    height: 570px;
+    border-radius: 6px;
+    background: #191919;
+    margin-top: 20px;
+    padding-right: 0px;
+    position: relative;
+}
+
+.new-year .ny-box2 {
+    margin-right: 0px;
+}
+
+.new-year h3 {
+    font-family: Montserrat;
+    font-size: 70px;
+    font-weight: 300;
+    line-height: 85.33px;
+    text-align: center;
+    color: #6C3EB8;
+    margin-top: 74px;
+}
+
+.new-year h2 {
+    font-family: Montserrat;
+    font-size: 150px;
+    font-weight: 300;
+    line-height: 182.85px;
+    text-align: center;
+    color: #6C3EB8;
+}
+
+.new-year .bati {
+    position: absolute;
+    top: 300px;
+    right: 1100px;
+    width: 204px;
+    height: 170px;
+    gap: 0px;
+    opacity: 0px;
+}
+
+.new-year .shtoto {
+    position: absolute;
+    top: 440px;
+    right: 620px;
+}
+
+.less {
+    width: 1274px;
+    height: 378px;
+    margin-top: 36px;
+    background: #191919;
+    padding-top: 31px;
+}
+
+.less h3 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24.38px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.sait-end {
+    width: 1274px;
+    height: 73px;
+    border-radius: 6px;
+    background: #191919;
+    margin: auto;
+    margin-top: 19px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+
+}
+
+.sait-end .logo-end {
+    width: 61px;
+    height: 25px;
+    /* padding: 3.73px 0px 4.1px 0px; */
+}
+
+.sait-end p {
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14.63px;
+    color: #576067;
+}
+
+.sait-end p span {
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14.63px;
+    color: #6C3EB8;
+}
+
+button {
+    width: 125px;
+    height: 38px;
+    gap: 0px;
+    border-radius: 6px;
+    background: #6C3EB8;
+    font-family: Montserrat;
+    font-size: 16px;
+    color: #FFFFFF;
+    border: none;
+}
+
+.seeBtn {
+    margin-top: 20px;
+    align-items: center;
+    display: flex;
+    padding-left: 25px;
+}
+
+.sc-h3 {
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24.38px;
+    text-align: left;
+    color: #FFFFFF;
+    text-align: center;
+    margin-top: 20px;
+}
