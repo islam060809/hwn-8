@@ -415,6 +415,11 @@ a:hover {
     color: #6C3EB8;
 }
 
+.icons{
+    display: flex;
+    gap: 16px;
+}
+
 button {
     width: 125px;
     height: 38px;
