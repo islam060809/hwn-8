@@ -390,9 +390,7 @@ a:hover {
     margin: auto;
     margin-top: 19px;
     display: flex;
-    flex-direction: row;
-    justify-content: start;
-
+    align-items: center;
 }
 
 .sait-end .logo-end {
