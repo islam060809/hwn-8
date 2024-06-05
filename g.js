@@ -9,6 +9,7 @@ const no2 = document.querySelector(".new-year")
 const no3 = document.querySelector(".less")
 const h3 = document.querySelector(".sc-h3")
 const per1 = document.querySelector(".per1")
+const per2 = document.querySelector(".per2")
 const url2 = "https://fakestoreapi.com/products"
 const url = "https://fakestoreapi.com/products"
 
@@ -133,9 +134,14 @@ async function getProById(id) {
     const data = await res.json()
     console.log(data)
     showSinglPro(data)
+
+
+
+
 }
 
 function showSinglPro(dd) {
+    console.log(dd)
     no1.style.display = "none"
     no2.style.display = "none"
     no3.style.display = "none"
@@ -148,13 +154,59 @@ function showSinglPro(dd) {
       <h3 id="sin-h3">${dd.price}$</h3>
       <p id="sin-p">${dd.description}</p>
       <button onclick="addCart(${dd.id})">Add to cart</button>
-        <button id="sin-btn">Add to favorites</button>
+        <button onclick="addFavo(${dd.id})" id="sin-btn">Add to favorites</button>
     </div>
     </div>
     `
 }
 
-function addCart(id) {
-        per1.style.display = "block"
-        per1.innerText = parseInt(per1.innerText) + 1;
+let favorites = []
+async function addFavo(id) {
+    try {
+        const res = await fetch(`${url}/${id}`)
+        const data = await res.json()
+        let isCorzina = favorites.find(x => x.id === id)
+        if (!isCorzina) {
+            favorites.push(data)
+            per2.style.display = "block"
+            per2.innerText = parseInt(per2.innerText) + 1;
+        }
+        else {
+            alert("ваш продукт уже в избронных")
+        }
+    } catch (error) {
+
+    }}
+
+let carzina = []
+async function addCart(id) {
+    try {
+        const res = await fetch(`${url}/${id}`)
+        const data = await res.json()
+        let isCorzina = carzina.find(x => x.id === id)
+        if (!isCorzina) {
+            carzina.push(data)
+            per1.style.display = "block"
+            per1.innerText = parseInt(per1.innerText) + 1;
+        }
+        else {
+            alert("ваш продукт уже в корзине")
+        }
+    } catch (error) {
+
+    }
+
+
+
+    // if (carzina.includes(id)) {
+    //     alert("AHHAHAHAHAHAHAHHAHAHAHHAHAHAH")
+    // }else{
+    //     p
+    //     carzina = carzina.push(id)
+    // }
+
+    // carzina.push(item)
+    // console.log("ok")
 }
+
+// carzina.map((item)=>)
