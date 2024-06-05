@@ -8,6 +8,7 @@ const no1 = document.querySelector(".worth")
 const no2 = document.querySelector(".new-year")
 const no3 = document.querySelector(".less")
 const h3 = document.querySelector(".sc-h3")
+const per1 = document.querySelector(".per1")
 const url2 = "https://fakestoreapi.com/products"
 const url = "https://fakestoreapi.com/products"
 
@@ -128,27 +129,32 @@ function showPro4(di) {
 }
 
 async function getProById(id) {
-    const res = await fetch(url+"/"+id)
+    const res = await fetch(url + "/" + id)
     const data = await res.json()
     console.log(data)
     showSinglPro(data)
 }
 
-function showSinglPro(dd){
-    no1.style.display="none"
-    no2.style.display="none"
-    no3.style.display="none"
-    sale.innerHTML=`<div class="blok">
+function showSinglPro(dd) {
+    no1.style.display = "none"
+    no2.style.display = "none"
+    no3.style.display = "none"
+    sale.innerHTML = `<div class="blok">
     <div class="blok1">
     <img id="sin-img" src="${dd.image}">
     </div>
-    <div>
-     <h2 id="sin-h2">${dd.title}</h2>
+    <div class="blok2">
+     <h3 id="sin-h2">${dd.title}</h3>
       <h3 id="sin-h3">${dd.price}$</h3>
       <p id="sin-p">${dd.description}</p>
-      <button>Add to cart</button>
+      <button onclick="addCart(${dd.id})">Add to cart</button>
         <button id="sin-btn">Add to favorites</button>
     </div>
     </div>
     `
+}
+
+function addCart(id) {
+        per1.style.display = "block"
+        per1.innerText = parseInt(per1.innerText) + 1;
 }
