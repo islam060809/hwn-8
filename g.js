@@ -184,6 +184,7 @@ async function addCart(id) {
         per1.style.display = "block";
         per1.innerText = carzina.length;
         console.log(carzina, "carzina");
+        localStorage.setItem("carzina", JSON.stringify(carzina))
     } else {
         // isCorzina.count += 1;
         // console.log(isCorzina);
@@ -193,15 +194,16 @@ async function addCart(id) {
         console.log(isCorzina);
         per1.innerText = carzina.length;
         alert("ваш продукт уже в корзине");
+        localStorage.setItem("carzina", JSON.stringify(carzina))
     }
 }
 
 function calculateTotalPrice(cart) {
-    return cart.reduce((total, item) => total + item.price * item.count, 0);
+    return cart.reduce((total, item) => total + item.price * item.count, 0)
 }
 
 function showCart(da) {
-    sale.innerHTML = "<h2>Your cart</h2>";
+    sale.innerHTML = "<h2 class='yourCart'>Your cart</h2>";
     for (const gg of da) {
         sale.innerHTML += `
             <div class="cart-box">
@@ -212,36 +214,75 @@ function showCart(da) {
                 </div>
                 <h2 class="first-price">${gg.price}$</h2>
                 <div>
-                    <button class="minus" >-</button>
+                    <button onclick="incrCountMinus(${gg.id})" class="minus" >-</button>
                     <span>${gg.count}<span>
-                    <button class="plus" >+</button>
+                    <button onclick="incrCount(${gg.id})" class="plus" >+</button>
                 </div>
                 <h2 class="end-price">${gg.price * gg.count}$</h2>
-                <img class="iks" src="iks.png">
+                <img onclick="deletCart(${gg.id})" class="iks" src="iks.png">
             </div>
         `;
     }
-    const totalPrice = calculateTotalPrice(da);
+    let totalPrice = calculateTotalPrice(da);
+    let roundTotalPrice = Math.round(totalPrice)
     sale.innerHTML += `<div class="end-cart">
-        <h2 class="total-price">TOTAL PRICE:<span> ${totalPrice}$</span></h2>
+        <h2 class="total-price">TOTAL PRICE:<span> ${roundTotalPrice}$</span></h2>
         <button class="checkBtn">Proceed to checkout</button>
     </div>`;
-    console.log(`Total price: ${totalPrice}$`);
 }
 
 cart.onclick = () => {
     showCart(carzina);
 };
 
-// function updateCount(id, increment) {
-//     let product = carzina.find(x => x.id === id);
-//     if (product) {
-//         product.count += increment;
-//         if (product.count < 1) {
-//             product.count = 1; // Ensure count doesn't go below 1
-//         }
-//         showCart(carzina); // Re-render the cart with the updated count
-//         per1.innerText = carzina.length; // Update cart item count
-//         console.log(carzina, "Updated cart");
-//     }
-// }
+function incrCount(id) {
+    const index = carzina.findIndex(el => el.id === id)
+    const befor = carzina.slice(0, index)
+    const after = carzina.slice(index + 1)
+    const carInd = carzina[index]
+    const updItem = { ...carInd, count: ++carInd.count }
+    console.log(updItem);
+    showCart(carzina)
+    carzina = [...befor, updItem, ...after]
+    localStorage.setItem("carzina", JSON.stringify(carzina))
+}
+
+function incrCountMinus(id) {
+    const index = carzina.findIndex(el => el.id === id)
+    const befor = carzina.slice(0, index)
+    const after = carzina.slice(index + 1)
+    const carInd = carzina[index]
+    if (carInd.count === 1) {
+
+    } else {
+        const updItem = { ...carInd, count: --carInd.count }
+        console.log(updItem);
+        showCart(carzina)
+        carzina = [...befor, updItem, ...after]
+        localStorage.setItem("carzina", JSON.stringify(carzina))
+    }
+}
+
+function deletCart(id) {
+    const index = carzina.findIndex(el => el.id === id)
+    const befor = carzina.slice(0, index)
+    const after = carzina.slice(index + 1)
+    const carInd = carzina[index]
+    carzina = [...befor, ...after]
+    localStorage.setItem("carzina", JSON.stringify(carzina))
+    showCart(carzina)
+    showInCart()
+}
+
+carzina = JSON.parse(localStorage.getItem("carzina"))
+console.log(carzina);
+
+function showInCart() {
+    per1.innerText = carzina.length
+    if (carzina.length == 0) {
+        per1.style.display = "none"
+    } else {
+        per1.style.display = "block"
+    }
+}
+showInCart()

@@ -102,8 +102,8 @@ body {
     padding: 0;
     display: flex;
     width: 1292px;
-    height: 454px;
     margin-top: 21px;
+    margin-bottom: 19px;
 }
 
 .categorie {
@@ -150,12 +150,8 @@ a:hover {
 
 .sale {
     width: 950px;
-    height: 443px;
-    top: -134px;
-    left: 267px;
-    gap: 0px;
+    /* max-height: 443px; */
     border-radius: 6px;
-    opacity: 0px;
     background: #191919;
     margin-left: 20px;
     display: block;
@@ -660,8 +656,19 @@ button {
     color: #FFFFFF;
 }
 
-.end-cart{
-    margin-top: 10px;
+.sale .end-cart {
+    margin-top: 20px;
     display: flex;
-    gap: 482px;
+    gap: 440px;
+    padding-left: 15px;
+    margin-bottom: 24px;
+}
+
+.yourCart {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24.38px;
+    color: #FFFFFF;
+    margin-top: 25px;
+    margin-left: 32px;
 }
