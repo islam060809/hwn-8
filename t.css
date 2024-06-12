@@ -8,7 +8,6 @@
 body {
     background: #212123;
     font-family: "Montserrat", sans-serif;
-    height: 2508px;
 }
 
 .conteiner {
@@ -543,6 +542,7 @@ button {
     background: #212123;
     padding-left: 16px;
     margin-top: 12px;
+    margin-bottom: 20px;
 }
 
 .cart-box img {
@@ -657,7 +657,7 @@ button {
 }
 
 .sale .end-cart {
-    margin-top: 20px;
+    margin-top: 10px;
     display: flex;
     gap: 440px;
     padding-left: 15px;

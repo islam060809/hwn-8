@@ -11,6 +11,7 @@ const h3 = document.querySelector(".sc-h3");
 const per1 = document.querySelector(".per1");
 const per2 = document.querySelector(".per2");
 const cart = document.querySelector("#cart");
+const favo = document.querySelector("#favo");
 const url2 = "https://fakestoreapi.com/products";
 const url = "https://fakestoreapi.com/products";
 
@@ -156,14 +157,17 @@ let favorites = [];
 async function addFavo(id) {
     const res = await fetch(`${url}/${id}`);
     const data = await res.json();
-    let isCorzina = favorites.find(x => x.id === id);
-    if (!isCorzina) {
+    let isFavo = favorites.find(x => x.id === id);
+    if (!isFavo) {
         favorites.push(data);
         per2.style.display = "block";
-        per2.innerText = parseInt(per2.innerText) + 1;
+        per2.innerText = favorites.length
         console.log(favorites, "Favo");
+        localStorage.setItem("favorites", JSON.stringify(favorites))
     } else {
+        per2.innerText = favorites.length;
         alert("ваш продукт уже в избронных");
+        localStorage.setItem("favorites", JSON.stringify(favorites))
     }
 }
 
@@ -171,14 +175,8 @@ let carzina = [];
 async function addCart(id) {
     const res = await fetch(`${url}/${id}`);
     const data = await res.json();
-    const newData = { ...data, count: 1 };
     let isCorzina = carzina.find(x => x.id === id);
     if (!isCorzina) {
-        // carzina.push(newData);
-        // per1.style.display = "block";
-        // per1.innerText = carzina.length;
-        // console.log(carzina, "carzina");
-
         const newData = { ...data, count: 1 };
         carzina.push(newData);
         per1.style.display = "block";
@@ -186,10 +184,6 @@ async function addCart(id) {
         console.log(carzina, "carzina");
         localStorage.setItem("carzina", JSON.stringify(carzina))
     } else {
-        // isCorzina.count += 1;
-        // console.log(isCorzina);
-        // alert("ваш продукт уже в корзине");
-
         isCorzina.count += 1;
         console.log(isCorzina);
         per1.innerText = carzina.length;
@@ -207,9 +201,9 @@ function showCart(da) {
     for (const gg of da) {
         sale.innerHTML += `
             <div class="cart-box">
-                <img width="20px" src="${gg.image}">
+                <img onclick="getProById(${gg.id})" width="20px" src="${gg.image}">
                 <div class="cart-text">
-                    <h3>${gg.title}</h3>
+                    <h3 onclick="getProById(${gg.id})">${gg.title}</h3>
                     <p>${gg.category}</p>
                 </div>
                 <h2 class="first-price">${gg.price}$</h2>
@@ -230,10 +224,29 @@ function showCart(da) {
         <button class="checkBtn">Proceed to checkout</button>
     </div>`;
 }
+function showFavo(da) {
+    sale.innerHTML = "<h2 class='yourCart'>Your Favorites</h2>";
+    for (const gg of da) {
+        sale.innerHTML += `
+            <div class="cart-box">
+                <img onclick="getProById(${gg.id})" width="20px" src="${gg.image}">
+                <div class="cart-text">
+                    <h3 onclick="getProById(${gg.id})">${gg.title}</h3>
+                    <p>${gg.category}</p>
+                </div>
+                <h2 class="first-price">${gg.price}$</h2>
+                <img onclick="deletFavo(${gg.id})" class="iks" src="iks.png">
+            </div>
+        `;
+    }
+}
 
 cart.onclick = () => {
     showCart(carzina);
 };
+favo.onclick=()=>{
+    showFavo(favorites)
+}
 
 function incrCount(id) {
     const index = carzina.findIndex(el => el.id === id)
@@ -267,13 +280,22 @@ function deletCart(id) {
     const index = carzina.findIndex(el => el.id === id)
     const befor = carzina.slice(0, index)
     const after = carzina.slice(index + 1)
-    const carInd = carzina[index]
     carzina = [...befor, ...after]
     localStorage.setItem("carzina", JSON.stringify(carzina))
     showCart(carzina)
     showInCart()
 }
+function deletFavo(id) {
+    const index = favorites.findIndex(el => el.id === id)
+    const befor = favorites.slice(0, index)
+    const after = favorites.slice(index + 1)
+    favorites = [...befor, ...after]
+    localStorage.setItem("favorites", JSON.stringify(favorites))
+    showFavo(favorites)
+    showInFavo()
+}
 
+favorites = JSON.parse(localStorage.getItem("favorites"))
 carzina = JSON.parse(localStorage.getItem("carzina"))
 console.log(carzina);
 
@@ -286,3 +308,13 @@ function showInCart() {
     }
 }
 showInCart()
+
+function showInFavo() {
+    per2.innerText = favorites.length;
+    if (favorites.length == 0) {
+        per2.style.display = "none"
+    } else {
+        per2.style.display = "block"
+    }
+}
+showInFavo()
