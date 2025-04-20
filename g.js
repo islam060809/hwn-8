@@ -12,8 +12,14 @@ const per1 = document.querySelector(".per1");
 const per2 = document.querySelector(".per2");
 const cart = document.querySelector("#cart");
 const favo = document.querySelector("#favo");
+const seeBtn = document.querySelector(".seeBtn");
+const SearchBtn = document.querySelector("#SearchBtn");
+const search = document.querySelector("#search")
+const lessBtn = document.querySelector(".lessBtn");
 const url2 = "https://fakestoreapi.com/products";
 const url = "https://fakestoreapi.com/products";
+
+let trendingPro = []
 
 async function getPro() {
     fetch(url2)
@@ -70,8 +76,8 @@ async function getPro3() {
 }
 getPro3();
 
-function checkAdult(age) {
-    return age.price <= 100;
+function checkAdult(data) {
+    return data.price <= 100;
 }
 
 function showPro3(di) {
@@ -244,7 +250,7 @@ function showFavo(da) {
 cart.onclick = () => {
     showCart(carzina);
 };
-favo.onclick=()=>{
+favo.onclick = () => {
     showFavo(favorites)
 }
 
@@ -318,3 +324,38 @@ function showInFavo() {
     }
 }
 showInFavo()
+
+seeBtn.onclick = () => {
+    fetch(url2)
+        .then((request) => request.json())
+        .then(data => {
+            console.log(data);
+            let gg = data.slice(6, 11);
+            showPro(gg);
+            seeBtn.style.display = "none"
+        });
+}
+
+lessBtn.onclick = () => {
+    fetch(url)
+        .then((request) => request.json())
+        .then(data => {
+            let gg = data.filter(checkAdult);
+            showPro3(gg.slice(6, 11));
+            lessBtn.style.display = "none"
+        });
+}
+
+SearchBtn.onclick = () => {
+    findByName(search.value)
+}
+
+function findByName(name) {
+    fetch(url)
+        .then((request) => request.json())
+        .then(data => {
+            console.log(name);
+            const newData = data.filter(x => x.title === name)
+            showSinglePro(newData[0])
+        })
+}
